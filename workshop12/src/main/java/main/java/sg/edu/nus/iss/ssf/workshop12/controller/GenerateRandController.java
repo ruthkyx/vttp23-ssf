@@ -1,4 +1,4 @@
-package main.java.sg.edu.nus.iss.ssf.workshop12.controller;
+package main.java.sg.edu.nus.iss.ssf.workshop12;
 
 import java.util.Iterator;
 
