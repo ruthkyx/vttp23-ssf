@@ -22,8 +22,9 @@ public class NumberController {
     @GetMapping(path= "/result")
     public String generateNumbers(@RequestParam int count, Model model) {
         List<Integer> numbersList = generateRandomNumbers(count);
+        // adding key: numbers , value: numberList
         model.addAttribute("numbers", numbersList);
-        model.addAttribute("text", "some text");
+        // model.addAttribute("text", "some text");
 
         return "result"; 
     }
