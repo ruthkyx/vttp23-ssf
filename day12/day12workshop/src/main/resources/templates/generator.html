@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Number Generator</title>
 </head>
+
 <body>
-    <form method="get" action="/generateNumbers">
-        <label for="count">Enter the number of values you would like to generate:</label>
-        <input type="number" name="count" id="count" min="1" max="30">
+    <h1>Generate some numbers??:</h1>
+    <form method="GET" action="/result">
+        <label for="count">number</label>
+        <input type="number" name="count" id="count">
         <button type="submit">Generate</button>
     </form>
     <div id="result"></div>

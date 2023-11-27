@@ -7,17 +7,25 @@ import java.util.Random;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping
 public class NumberController {
     
-    @GetMapping(path="/generateNumbers/")
-    public String generateNumbers(@PathVariable int count, Model model) {
-        List<Integer> numbers = generateRandomNumbers(count);
-        model.addAttribute("numbers", numbers);
+    @GetMapping(path ="/")
+    public String home() {
+        return "generator";
+    }
 
-        return "numberList"; // thymeleaf template name
+    @GetMapping(path= "/result")
+    public String generateNumbers(@RequestParam int count, Model model) {
+        List<Integer> numbersList = generateRandomNumbers(count);
+        model.addAttribute("numbers", numbersList);
+        model.addAttribute("text", "some text");
+
+        return "result"; 
     }
 
     public List<Integer> generateRandomNumbers (int count) {
@@ -27,11 +35,7 @@ public class NumberController {
         Random rand = new Random();
 
         for(int i = 0; i < count; i++) {
-            int randomNumber;
-            do {
-                randomNumber = rand.nextInt(30)+1;
-            } while (numbers.contains(randomNumber));
-             numbers.add(randomNumber);
+              numbers.add(rand.nextInt(30)+1);
         }
 
         return numbers;

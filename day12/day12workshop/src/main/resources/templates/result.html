@@ -7,10 +7,9 @@
 </head>
 <body>
     <h1>Generated numbers:</h1>
-    <ul th:each="number:${numbers}">
+    <ul th:each="num:${numbers}">
         <li>
-            <img th:src="@{'/images/' + ${number} + '.jpg'}" alt="Number Image"/>
-            <span th:text="${number}"></span>
+            <img style="width: 50px;" th:src="@{/images/number{variable}.jpg(variable=${num})}" alt="Number Image"/>
         </li>
     </ul>
 </body>
