@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path="/index")
-public class AddressBookController {
+@RequestMapping(path="/home")
+public class HomeController {
     
-    @GetMapping(path="/")
-    public String index() {
-        return "index";
+    @GetMapping
+    public String home() {
+        return "home";
     }
 
 }
