@@ -3,14 +3,19 @@ package sg.edu.nus.iss.workshop13.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.text.DateFormat;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonContact {
+public class Contact {
     
     @NotEmpty (message = "name is a required field!")
     private String name;
@@ -23,6 +28,11 @@ public class PersonContact {
     private String email;
 
     @NotEmpty(message="please input your birth date")
-    @Past(message="you born tdy meh???")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String birthday;
+
+    public Contact(String name, String phone, String email, DateFormat bday) {
+
+    }
+
 }
