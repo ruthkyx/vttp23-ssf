@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.workshop13.repo;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,7 +18,7 @@ import sg.edu.nus.iss.workshop13.model.Contact;
 public class ContactRepo {
 
     final String dirPath = "/Users/ruthie/Desktop/codes/vttp23/SSF/day13";
-    final String fileName = "allcontacs.txt";
+    final String fileName = "contactsss.txt";
     private List <Contact> contacts;
 
     public ContactRepo() throws ParseException {
@@ -26,7 +27,7 @@ public class ContactRepo {
             contacts = new ArrayList<>();
         }
 
-        DateFormat bday = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat bday = new SimpleDateFormat("yyyy-MM-dd");
         // Date bday = date.parse("yyyy-mm-dd");
 
         Contact newcon = new Contact("name", "phone", "email", bday);
@@ -44,6 +45,8 @@ public class ContactRepo {
 
         result = contacts.add(contact);
 
+        File f = new File(dirPath + "/" + fileName);
+        
 
         return result;
     }

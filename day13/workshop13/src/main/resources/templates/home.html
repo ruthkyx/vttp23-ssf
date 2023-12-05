@@ -12,24 +12,35 @@
 <body>
     <div class="container">
         <h1>Add Contacts:</h1>
-        <form method="POST" th:action="@{/list}" th:object="${contact}">
+
+        <form method="POST" th:action="@{/listing}" data-th-object="${contact}">
+
         <div class="mb-3">
             <label for="name">Name:</label>
-            <input type="text" name="name" field="name"/>
+            <input type="text" value="name" data-th-field="*{name}"/>
+            <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}" data-th-errorclass="error"> </span>
         </div>
+
         <div class="mb-3">
             <label for="phone">Phone:</label>
-            <input type="number" name="phone" field="phone">
+            <input type="number" value="phone" data-th-field="*{phone}">
+            <span data-th-if="${#fields.hasErrors('phone')}" data-th-errors="*{phone}" data-th-errorclass="error"> </span>
         </div>
+
         <div class="mb-3">
             <label for="email">Email:</label>
-            <input type="email" name="email" field="email">
+            <input type="email" value="email" data-th-field="*{email}">
+            <span data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}" data-th-errorclass="error"> </span>
         </div>
+
         <div class="mb-3">
             <label for="birthday">Birthday:</label>
-            <input type="text" name="birthday" field="birthday">
+            <input type="date" value="birthday" data-th-field="*{birthday}">
+            <span data-th-if="${#fields.hasErrors('birthday')}" data-th-errors="*{birthday}" data-th-errorclass="error"> </span>
         </div>
+
         <button type="submit">save contact</button>
+
         </form>
         <div id="list"></div> . 
     </div>

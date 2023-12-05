@@ -11,6 +11,7 @@
 
 <body>
     <h1>Contact List</h1>
+
     <table class="table">
         <thead>
             <tr>
@@ -23,12 +24,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="fella:${con}">
+            <tr data-th-each="fella:${showcons}">
                 <td></td>
-                <td th:text="${fella.name}">name</td>
-                <td th:text="${fella.phone}">phone</td>
-                <td th:text="${fella.email}">email</td>
-                <td th:text="${fella.birthday}">birthday</td>
+                <td th:text="${showcons.name}">name</td>
+                <td th:text="${showcons.phone}">phone</td>
+                <td th:text="${showcons.email}">email</td>
+                <td th:text="${showcons.birthday}">birthday</td>
             </tr>
         </tbody>
     </table>

@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.text.DateFormat;
-import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
