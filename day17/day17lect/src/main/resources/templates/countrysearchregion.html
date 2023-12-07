@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>regional search</title>
+</head>
+<body>
+    <div class="container">
+        <h1>search country by region</h1>
+        <form action="POST" th:action="@{/process/searchCountryRegion}">
+            <div class="mb-3">
+                <label for="searchCountryRegion" class="form-label">Search By Region</label>
+                <select name="regions" id="">
+                    <option th:each="regions: ${searchRegions}" th:value="${searchRegion}" th:text="${region}"></option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

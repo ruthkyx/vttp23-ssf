@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>announcement</title>
+</head>
+<body>
+    <div class="container">
+        <h1>create announcement</h1>
+        <form method="POST" th:action="{@/annoucements/processAnnouncements}" th:object="${announcement}">
+
+            <div class="mb-3">
+                <label for="annId" class="form-label">Announcement ID</label>
+                <input type="number" id="annId" th:field="*{annId}" class="form-control" aria-describedby="annIdHelp">
+                <div id="annIdHelp" class="form-text">only digits from 11111 to 88888</div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('annId')}" th:errors="@{annId}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="code" class="form-label">code</label>
+                <input type="text" id="code" th:field="*{code}" class="form-control" aria-describedby="codeHelp">
+                <div id="codeHelp" class="form-text">only letters from a to z!</div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('code')}" th:errors="@{code}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">title</label>
+                <input type="text" class="form-control" id="title" th:field="*{title}" aria-describedby="titleHelp">
+                <div id="titleHelp" class="form-text">min 10, max 50</div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="@{title}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="messsage" class="form-label">message</label>
+                <input type="text" class="form-control" id="message" th:field="*{message}" aria-describedby="messageHelp">
+                <div id="message" class="form-text">write a message here</div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('message')}" th:errors="@{message}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="startDate" class="form-label">start date</label>
+                <input type="date" class="form-control" id="startDate" th:field="*{startDate}" aria-describedby="dateHelp">
+                <div id="dateHelp" class="form-text">date must be before today!</div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('startDate')}" th:errors="@{startDate}"></div>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary">submit</button>
+    </div>
+</body>
+</html>
