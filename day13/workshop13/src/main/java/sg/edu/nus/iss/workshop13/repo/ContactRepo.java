@@ -1,11 +1,12 @@
 package sg.edu.nus.iss.workshop13.repo;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -17,43 +18,54 @@ import sg.edu.nus.iss.workshop13.model.Contact;
 @Repository
 public class ContactRepo {
 
-    final String dirPath = "/Users/ruthie/Desktop/codes/vttp23/SSF/day13";
+    final String dirPath = "/Users/ruthie/Desktop/codes/vttp23/SSF/day13/workshop13/data";
     final String fileName = "contactsss.txt";
-    private List <Contact> contacts;
+    private List<Contact> contacts = new ArrayList<Contact>();
 
-    public ContactRepo() throws ParseException {
-        // creating a new list if there's no contacts yet
-        if(contacts == null) {
-            contacts = new ArrayList<>();
+    // public ContactRepo() throws ParseException {
+
+    // check if the txt file exists in the data dir and create a new txt file if it doesnt
+    public void checkFile() throws IOException {
+        File f = new File(dirPath + "/" + fileName);
+        if (!f.exists()){
+            f.createNewFile();
         }
-
-        DateFormat bday = new SimpleDateFormat("yyyy-MM-dd");
-        // Date bday = date.parse("yyyy-mm-dd");
-
-        Contact newcon = new Contact("name", "phone", "email", bday);
-        contacts.add(newcon);
-    }
-
-    // showing all contacts
-    public List<Contact> findAll() {
-        return contacts;
     }
 
     // save contacts
-    public Boolean save(Contact contact) {
-        Boolean result = false;
+    public List<Contact> save(Contact contact) throws FileNotFoundException {
 
-        result = contacts.add(contact);
+        // Contact contact = new Contact();
+        contacts.add(contact);
 
         File f = new File(dirPath + "/" + fileName);
-        
+        OutputStream os = new FileOutputStream(f, true);
+        PrintWriter pw = new PrintWriter(os);
+        /* flush ensures that the data is updated real time cos when you write data to an output stream, 
+        it might not get sent immediately but get stored somewhereelse first */
+        pw.write(contact.toString());
+        pw.flush();
+        pw.close();
+
+        return contacts;
+    }
+
+    // delete contact
+    public Boolean delete(Contact contact) {
+        Boolean result = false;
+        int contactIndex = contacts.indexOf(contact);
+
+        if (contactIndex >= 0) {
+            // index >= 0 means employee is present in list -> remove then result becomes true to indicate successful deletion
+            contacts.remove(contactIndex);
+            result = true;
+        }
 
         return result;
     }
 
-    // delete contact
-    public void delete() {
-
+    public Contact findByEmail(String email) {
+        
     }
 
 }

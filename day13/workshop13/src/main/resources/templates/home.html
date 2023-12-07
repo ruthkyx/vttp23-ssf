@@ -15,31 +15,31 @@
 
         <form method="POST" th:action="@{/listing}" data-th-object="${contact}">
 
-        <div class="mb-3">
-            <label for="name">Name:</label>
-            <input type="text" value="name" data-th-field="*{name}"/>
-            <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}" data-th-errorclass="error"> </span>
-        </div>
+            <div class="mb-3">
+                <label for="name">Name:</label>
+                <input type="text" value="name" data-th-field="*{name}"/>
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
-        <div class="mb-3">
-            <label for="phone">Phone:</label>
-            <input type="number" value="phone" data-th-field="*{phone}">
-            <span data-th-if="${#fields.hasErrors('phone')}" data-th-errors="*{phone}" data-th-errorclass="error"> </span>
-        </div>
+            <div class="mb-3">
+                <label for="phone">Phone:</label>
+                <input type="number" value="phone" data-th-field="*{phone}">
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
 
-        <div class="mb-3">
-            <label for="email">Email:</label>
-            <input type="email" value="email" data-th-field="*{email}">
-            <span data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}" data-th-errorclass="error"> </span>
-        </div>
+            <div class="mb-3">
+                <label for="email">Email:</label>
+                <input type="email" value="email" data-th-field="*{email}">
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 
-        <div class="mb-3">
-            <label for="birthday">Birthday:</label>
-            <input type="date" value="birthday" data-th-field="*{birthday}">
-            <span data-th-if="${#fields.hasErrors('birthday')}" data-th-errors="*{birthday}" data-th-errorclass="error"> </span>
-        </div>
+            <div class="mb-3">
+                <label for="birthday">Birthday:</label>
+                <input type="date" value="birthday" data-th-field="*{birthday}">
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div>
 
-        <button type="submit">save contact</button>
+            <button type="submit">save contact</button>
 
         </form>
         <div id="list"></div> . 

@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.text.DateFormat;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -20,7 +18,7 @@ public class Contact {
     private String name;
 
     @NotEmpty(message ="phone number is required!")
-    @Pattern(regexp="(8|9)[0-9]{7}", message="sg phone numbers are 8 digits and starts w 8/9")
+    @Pattern(regexp="(8|9)[0-9]{7}")
     private String phone;
 
     @NotEmpty(message="email is a required field")
@@ -30,8 +28,10 @@ public class Contact {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String birthday;
 
-    public Contact(String name, String phone, String email, DateFormat bday) {
-
+    @Override
+    public String toString() {
+        return "Contact [name=" + name + ", phone=" + phone + ", email=" + email + ", birthday=" + birthday + "]";
     }
+
 
 }

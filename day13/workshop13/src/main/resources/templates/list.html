@@ -10,32 +10,43 @@
 </head>
 
 <body>
-    <h1>Contact List</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th scope="col"></th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Email</th>
-                <th scope="col">Birthday</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-th-each="fella:${showcons}">
-                <td></td>
-                <td th:text="${showcons.name}">name</td>
-                <td th:text="${showcons.phone}">phone</td>
-                <td th:text="${showcons.email}">email</td>
-                <td th:text="${showcons.birthday}">birthday</td>
-            </tr>
-        </tbody>
-    </table>
-    <form action="/home">
-        <button type="submit">Back to Home</button>
-    </form>
+    <div class="container">
+        <h1>Contact List</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="fella: ${showcons}">
+                    <td></td>
+                    <td th:text="*{fella.name}"></td>
+                    <td th:text="*{fella.phone}"></td>
+                    <td th:text="*{fella.email}"></td>
+                    <td th:text="*{fella.birthday}"></td>
+                    <td>
+                        <form method="POST" th:action="@{/delete/ + '${email}'}">
+                            <button type="submit">delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button-container">
+            <form method="POST" action="/save">
+                <button type="submit">Save</button>
+            </form>
+            <form method="GET" action="/home">
+                <button type="submit">Back</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
