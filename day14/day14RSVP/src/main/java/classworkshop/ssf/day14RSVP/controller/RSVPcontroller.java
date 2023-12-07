@@ -13,13 +13,14 @@ public class RSVPcontroller {
     
     @GetMapping
     public String getRSVP(Model model) {
-        model.addAttribute(null, model);
+        model.addAttribute("name", );
         return "thankyou";
     }
 
     @PostMapping
-    public ModelAndView postRSVP() {
+    public ModelAndView postRSVP(Model model) {
         ModelAndView mav = new ModelAndView();
+
         return mav;
     }
 
