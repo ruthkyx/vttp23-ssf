@@ -20,7 +20,7 @@ public class ContactRepo {
 
     final String dirPath = "/Users/ruthie/Desktop/codes/vttp23/SSF/day13/workshop13/data";
     final String fileName = "contactsss.txt";
-    private List<Contact> contacts = new ArrayList<Contact>();
+    private List<Contact> contacts = new ArrayList<>();
 
     // public ContactRepo() throws ParseException {
 
@@ -65,7 +65,14 @@ public class ContactRepo {
     }
 
     public Contact findByEmail(String email) {
-        
+        // retrieve object from storage
+        // iterate over each contact object in the list and call getEmail() method. map fn calls getEmail()  & retrieces email address 
+        contacts.stream()
+            .filter(contact -> contact.getEmail().equals(email))
+            .findFirst()
+            .get();
+
+        return null;
     }
 
 }

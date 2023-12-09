@@ -31,19 +31,18 @@
                     <td th:text="*{fella.email}"></td>
                     <td th:text="*{fella.birthday}"></td>
                     <td>
-                        <form method="POST" th:action="@{/delete/ + '${email}'}">
-                            <button type="submit">delete</button>
+                        <form method="GET" th:action="@{/delete/ + '${fella.email}'}">
+                            <button type="submit" class="btn btn-secondary">delete</button>
                         </form>
+                        <!-- <a th:href="@{/delete/{email}(email=${fella.email})}" class="btn btn-secondary"> Delete </a> -->
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="button-container">
-            <form method="POST" action="/save">
-                <button type="submit">Save</button>
-            </form>
+
             <form method="GET" action="/home">
-                <button type="submit">Back</button>
+                <button type="submit" class="btn btn-primary">Back</button>
             </form>
         </div>
     </div>

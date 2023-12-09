@@ -40,7 +40,7 @@ public class MainController {
         // showcons should be a list of contacts saved
         if(br.hasErrors()) {
             return "home";
-        } // this is to implement the validations from the model 
+        } // this is to implement the validations from the model             
 
         List<Contact> contactList = contactRepo.save(contact); // returns contacts list from repo. need to pass in the new contact
         model.addAttribute("showcons", contactList);
@@ -49,11 +49,13 @@ public class MainController {
         return "list";
     }
 
-    @PostMapping(path="/delete/{email}")
+    @GetMapping(path="/delete/{email}")
     public String delete(@PathVariable("email") String email) {
-        // contactRepo.delete(email);
+        
+        Contact person = contactRepo.findByEmail(email);
+        contactRepo.delete(person);
 
-        return "redirect:/list";
+        return "redirect:/listing";
     }
 
     
