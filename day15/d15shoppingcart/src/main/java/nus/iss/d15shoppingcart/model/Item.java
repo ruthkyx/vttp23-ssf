@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Item {
     
     @NotBlank(message="field is required!")
-    public String item;
+    public String name;
 
     @NotBlank
     @Min(value=1, message=("min purchase qty is 1"))
