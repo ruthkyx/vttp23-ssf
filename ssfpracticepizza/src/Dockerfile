@@ -1,0 +1,17 @@
+FROM 
+
+LABEL 
+
+ARG 
+
+WORKDIR 
+
+COPY 
+
+RUN 
+
+ENV 
+
+EXPOSE 
+
+ENTRYPOINT
